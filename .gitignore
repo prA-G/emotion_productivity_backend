@@ -1,0 +1,13 @@
+# Virtual environment
+venv/
+
+# Database
+app.db
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS / Editor junk
+.DS_Store
+.vscode/
