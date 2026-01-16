@@ -9,4 +9,13 @@ class MoodCreate(BaseModel):
 
 class TaskCreate(BaseModel):
     title: str
+    effort: str      # light / heavy
+    priority: str    # low / medium / high
+
+class TaskResponse(BaseModel):
+    title: str
     effort: str
+    priority: str
+
+    class Config:
+        orm_mode = True

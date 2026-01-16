@@ -20,5 +20,6 @@ class Task(Base):
 
     id = Column(Integer, primary_key=True)
     title = Column(String)
-    effort = Column(String)  # light / heavy
+    effort = Column(String)      # light / heavy
+    priority = Column(String)    # low / medium / high
     user_id = Column(Integer, ForeignKey("users.id"))
