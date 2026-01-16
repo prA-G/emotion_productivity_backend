@@ -1,157 +1,99 @@
 # 🌱 Emotional State–Aware Productivity Backend
 
-> **A human-centric backend system that adapts daily task planning based on a user’s emotional state — because productivity should respect humans, not exhaust them.**
+A human-centric backend system that generates daily task plans by considering a user’s **emotional state, task effort, and task priority**, helping users stay productive without burnout.
 
 ---
 
-## 🧠 Why This Project Exists
+## 💡 Why This Project?
 
-In today’s tech-driven world, people are expected to be productive every day at the same intensity, regardless of how they feel.
-
-But humans are not machines.
-
-- Some days we feel energized
-- Some days we feel overwhelmed
-- Some days we are mentally exhausted
-
-Most productivity systems completely ignore emotional state.
-
-This project was built to answer one core question:
-
-> **What if software adapted to human emotions instead of forcing humans to adapt to software?**
+Most productivity tools assume users can perform at the same intensity every day.  
+This project introduces **emotion-aware decision-making**, allowing productivity to adapt to mental energy and urgency.
 
 ---
 
-## 🚀 What This Project Does
+## 🚀 Key Features
 
-This backend system dynamically generates a **daily task plan** based on a user’s **current emotional state**.
-
-### Core Concept
-- Users log how they feel (mood)
-- Users add tasks with effort levels
-- The backend intelligently filters tasks based on mood
-- On low-energy days → only light tasks are suggested
-- On high-energy days → all tasks are allowed
-
-The goal is to support **sustainable productivity**, not burnout-driven output.
+- 🔐 JWT-based authentication (signup & login)
+- 👤 User-specific data isolation
+- 🧠 Emotion-aware task filtering
+- ⚖️ Priority-aware logic for urgent tasks
+- 📋 View all tasks with effort & priority
+- 📊 Dynamic daily plan generation
 
 ---
 
 ## 🛠️ Tech Stack
 
-- Python
-- FastAPI
-- SQLite
-- SQLAlchemy (ORM)
-- JWT Authentication
-- Passlib + bcrypt (password hashing)
-- Swagger UI (API testing)
+- Python  
+- FastAPI  
+- SQLite  
+- SQLAlchemy ORM  
+- OAuth2 + JWT  
+- Passlib (bcrypt)  
+- Swagger UI  
 
 ---
 
-## 📂 Project Structure
-emotion_productivity_backend/
-│
-├── app/
-│ ├── main.py # API routes
-│ ├── database.py # Database configuration
-│ ├── models.py # Database models
-│ ├── schemas.py # Request & response schemas
-│ ├── auth.py # Authentication & password hashing
-│ ├── logic.py # Emotion-based business logic
-│
-├── run_server.bat # One-click server launcher (Windows)
-├── app.db # SQLite database (ignored in Git)
-├── requirements.txt
-└── README.md
+## 🔄 How It Works
+
+1. User signs up and logs in (JWT issued)
+2. User logs emotional state:
+   - `low`, `overwhelmed`, `neutral`, `energized`
+3. User adds tasks with:
+   - effort: `light` / `heavy`
+   - priority: `low` / `medium` / `high`
+4. Backend generates daily plan using rule-based logic:
+   - Light tasks are always included
+   - Heavy tasks require sufficient energy
+   - **High-priority tasks appear even on low-energy days**
 
 ---
 
-## 🔄 How the System Works
+## 📌 API Endpoints
 
-### 1️⃣ User Authentication
-- Users can sign up and log in securely
-- Passwords are hashed using bcrypt
-- JWT tokens are issued on login
+| Method | Endpoint | Description |
+|------|---------|-------------|
+| POST | `/signup` | Create user |
+| POST | `/login` | Login & get JWT |
+| POST | `/mood` | Log emotional state |
+| POST | `/task` | Add task |
+| GET  | `/tasks` | View all user tasks |
+| GET  | `/daily-plan` | Get emotion-aware task plan |
 
-### 2️⃣ Mood Logging
-Users log their current emotional state:
-- `low`
-- `overwhelmed`
-- `neutral`
-- `energized`
-
-### 3️⃣ Task Creation
-Tasks are created with effort levels:
-- `light`
-- `heavy`
-
-### 4️⃣ Daily Plan Generation
-The backend applies rule-based logic:
-
-- If mood is `low` or `overwhelmed`  
-  → only light tasks are returned
-- If mood is `neutral` or `energized`  
-  → all tasks are returned
-
-All decision-making logic resides in the backend.
+All endpoints are **JWT-protected**.
 
 ---
 
-## 🧪 Running the Project (Windows)
+## ▶️ Run the Project
 
-1. Clone the repository
-2. Create and activate a virtual environment
-3. Install dependencies from `requirements.txt`
-4. Double-click the file:
-- `run_server.bat`
-5. Swagger UI will open automatically at:
-  http://127.0.0.1:8000/docs
-  
+```bash
+venv\Scripts\activate
+python -m uvicorn app.main:app --reload
+
 
 ---
 
-## 🌍 Why This Project Is Important
+## 🌍 Why This Matters
 
-### 💻 Tech Professionals
-- Helps prevent burnout
-- Encourages sustainable work patterns
-- Respects mental energy levels
+This backend can power:
 
-### 🎓 Students
-- Supports flexible study planning
-- Reduces guilt on low-energy days
+- Mental health & wellness applications  
+- Smart planners & habit trackers  
+- Corporate productivity tools  
+- Burnout-prevention systems  
+- Emotion-aware AI assistants  
 
-### 🏢 Corporate Productivity Tools
-- Can be integrated into internal task systems
-- Supports employee wellness initiatives
-
-### 📱 Mental Health & Wellness Applications
-- Backend logic can power habit trackers and focus apps
-- Can support emotion-aware digital tools
-
-### 🤖 Intelligent Systems & AI Assistants
-- Can be extended with analytics and recommendations
-- Useful for adaptive systems and smart planners
+It demonstrates **human-centered backend system design**, not just CRUD APIs.
 
 ---
 
 ## 🔮 Future Enhancements
 
-- JWT-protected user-specific task isolation
-- Mood history tracking and analytics
-- AI-based mood prediction
-- Mobile application integration
-- Burnout risk indicators
-- Team productivity insights
-
----
-
-## 💡 Design Philosophy
-
-> **Productivity should be compassionate.**  
-> **Software should understand humans.**  
-> **Technology should reduce pressure, not increase it.**
+- Task completion & deadlines  
+- Mood analytics & insights  
+- AI-based task recommendations  
+- Frontend / mobile integration  
+- Database migrations with Alembic  
 
 ---
 
@@ -159,18 +101,3 @@ All decision-making logic resides in the backend.
 
 **Pragati Dwivedi**  
 Aspiring Backend Engineer | Python Developer
-
----
-
-## ⭐ Final Note
-
-This project is not just a CRUD backend.  
-It demonstrates:
-- Backend architecture fundamentals
-- Clean API design
-- Business logic separation
-- Human-centered system thinking
-
-Built with empathy and real-world relevance.
-
-
